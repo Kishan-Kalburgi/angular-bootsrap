@@ -1,7 +1,9 @@
+import { AngularMaterial } from './angular-material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+
 
 // import components
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +31,8 @@ import { AdminMainContentComponent } from './pages/admin/admin-main-content/admi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule
+    LayoutModule,
+    AngularMaterial
   ],
   providers: [],
   bootstrap: [AppComponent]
