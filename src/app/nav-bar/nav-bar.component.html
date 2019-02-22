@@ -8,7 +8,15 @@
       <a class="nav-item nav-link" [routerLink]="['/home']">Home</a>
       <a class="nav-item nav-link" [routerLink]="['/pricing']">Services</a>
       <a class="nav-item nav-link" [routerLink]="['/pricing']">Pricing</a>
-      <a class="nav-item nav-link" [routerLink]="['/login']">Login</a>
+    </div>
+    <div class="container"></div>
+    <!-- if user not logged in -->
+    <div class="navbar-nav" *ngIf="!loginService.isLoggedIn()">
+      <a class="nav-item nav-link btn btn-outline-danger btn-sm" [routerLink]="['/login']">Login</a>
+    </div>
+    <!-- if user logged in -->
+    <div class="navbar-nav" *ngIf="loginService.isLoggedIn()">
+      <a class="nav-item nav-link btn btn-outline-danger btn-sm" (click)="onSignout()">Logout</a>
     </div>
   </div>
 </nav>
