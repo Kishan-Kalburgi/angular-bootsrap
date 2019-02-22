@@ -1,6 +1,9 @@
 .home-bg {
     background-image: url('../../../assets/home_bg.jpg');
+    text-shadow: 12px 10px 20px #00000059;
 }
+
+
 
 .container {
     margin-bottom: 10em;
