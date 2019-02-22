@@ -11,11 +11,11 @@
     </div>
     <div class="container"></div>
     <!-- if user not logged in -->
-    <div class="navbar-nav" *ngIf="!loginService.isLoggedIn()">
+    <div class="navbar-nav" *ngIf="!authService.isLoggedIn()">
       <a class="nav-item nav-link btn btn-outline-danger btn-sm" [routerLink]="['/login']">Login</a>
     </div>
     <!-- if user logged in -->
-    <div class="navbar-nav" *ngIf="loginService.isLoggedIn()">
+    <div class="navbar-nav" *ngIf="authService.isLoggedIn()">
       <a class="nav-item nav-link btn btn-outline-danger btn-sm" (click)="onSignout()">Logout</a>
     </div>
   </div>
