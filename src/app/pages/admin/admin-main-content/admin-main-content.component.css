@@ -1,7 +1,16 @@
 table {
     width: 100%;
-  }
-  
-  th.mat-sort-header-sorted {
+}
+ 
+th {
+    font-weight: bold;
+    font-size: medium;
+}
+
+th.mat-sort-header-sorted {
     color: black;
-  }
+}
+
+.my-mr {
+    margin-top: 1em;
+}

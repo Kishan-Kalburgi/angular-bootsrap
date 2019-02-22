@@ -3,12 +3,12 @@
 </nav>
 <div class="container-fluid">
   <!-- filter -->
-  <div class="row">
-    <input class="form-control" id="myInput" type="text" placeholder="Search.."
+  <div class="row my-mr">
+    <input class="form-control" id="myInput" type="text" placeholder="search..."
       (keyup)="applyFilter($event.target.value)">
   </div>
   <!-- table -->
-  <div class="row">
+  <div class="row my-mr">
     <table mat-table [dataSource]="dataSource" matSort class="table-hover">
 
       <!-- Position Column -->
@@ -38,6 +38,8 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <div class="row my-mr">
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
