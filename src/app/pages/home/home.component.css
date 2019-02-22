@@ -1,0 +1,20 @@
+.home-bg {
+    background-image: url('../../../assets/home_bg.jpg');
+}
+
+.container {
+    margin-bottom: 10em;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.come-visit-btn {
+    box-shadow: 6px 9px black;
+}
+
+.come-visit-btn:hover {
+    box-shadow: 2px 4px black;
+}
