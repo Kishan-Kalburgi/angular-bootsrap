@@ -2,6 +2,7 @@ import { AngularMaterial } from './angular-material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 
 
@@ -14,6 +15,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { AdminMainContentComponent } from './pages/admin/admin-main-content/admin-main-content.component';
+import { AddInventoryComponent } from './pages/admin/add-inventory/add-inventory.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { AdminMainContentComponent } from './pages/admin/admin-main-content/admi
     LoginComponent,
     HomeComponent,
     PricingComponent,
-    AdminMainContentComponent
+    AdminMainContentComponent,
+    AddInventoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     LayoutModule,
     AngularMaterial
   ],

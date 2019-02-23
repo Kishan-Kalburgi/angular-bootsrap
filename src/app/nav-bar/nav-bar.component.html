@@ -1,6 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <span class="navbar-brand mb-0 h1">UBREAK<span class="text-danger">IFIX</span></span>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -8,6 +9,16 @@
       <a class="nav-item nav-link" [routerLink]="['/home']">Home</a>
       <a class="nav-item nav-link" [routerLink]="['/pricing']">Services</a>
       <a class="nav-item nav-link" [routerLink]="['/pricing']">Pricing</a>
+      <li class="nav-item dropdown" *ngIf="authService.isLoggedIn()">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Inventory
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/inventory']"><i class="fas fa-eye"></i> View Inventories</a>
+          <a class="dropdown-item" [routerLink]="['/addInventory']"><i class="fas fa-plus-circle"></i> Add Inventory</a>
+        </div>
+      </li>
     </div>
     <div class="container"></div>
     <!-- if user not logged in -->
