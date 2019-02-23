@@ -13,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
-import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.component';
 import { AdminMainContentComponent } from './pages/admin/admin-main-content/admin-main-content.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { AdminMainContentComponent } from './pages/admin/admin-main-content/admi
     LoginComponent,
     HomeComponent,
     PricingComponent,
-    AdminLayoutComponent,
     AdminMainContentComponent
   ],
   imports: [

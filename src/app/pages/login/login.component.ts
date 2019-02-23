@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     // this.router.navigate(['/dashboard']);
     this.authService.login().subscribe(() => {
       localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/inventory']);
     });
   }
 
