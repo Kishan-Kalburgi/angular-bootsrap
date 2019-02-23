@@ -11,6 +11,8 @@ export interface PeriodicElement {
   status: string;
 }
 
+// mock data just for testing
+// delete it before creating build/deploying
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     billNo: 1,
@@ -737,6 +739,10 @@ export class AdminMainContentComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyBtnFilter(filterValue: string) {
     if (filterValue === '') {
       this.pageTitle = 'ALL';
       this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -744,5 +750,9 @@ export class AdminMainContentComponent implements OnInit {
       this.pageTitle = filterValue.toLocaleUpperCase();
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
+  }
+
+  onRowClick(rowData) {
+    console.log(rowData);
   }
 }
