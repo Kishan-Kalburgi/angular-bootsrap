@@ -1,0 +1,32 @@
+<div class="container text-center my-head">
+  <img class="mb-4" src="./../../../assets/brand_logo.png" alt="" width="300" height="50">
+  <h2>Customer Information</h2>
+  <div class="alert alert-warning" *ngIf="errorMsg">
+    Please enter all information correctly!!
+  </div>
+  <form class="form-add-inventory form-inline" #inventoryForm="ngForm">
+    <!-- customer name -->
+    <label for="customerName" class="mb-2 mr-sm-2"><i class="fas fa-user"></i></label>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="customerName" name="customerName"
+      [ngModel]="data.customerName" placeholder="Customer Name" required="true" autofocus="">
+
+    <!-- phone number -->
+    <label for="phoneNumber" class="mb-2 mr-sm-2"><i class="fas fa-phone"></i></label>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="phoneNumber" name="phoneNumber"
+      [ngModel]="data.phoneNumber" placeholder="Phone Number" required="">
+
+    <!-- order date -->
+    <label for="orderDate" class="mb-2 mr-sm-2"><i class="fas fa-calendar-day"></i></label>
+    <input type="date" class="form-control mb-2 mr-sm-2" id="orderDate" name="orderDate" [ngModel]="data.orderDate"
+      placeholder="Order Date" required="">
+
+    <!-- delovery date -->
+    <label for="deliveryDate" class="mb-2 mr-sm-2"><i class="fas fa-calendar-check"></i></label>
+    <input type="date" class="form-control mb-2 mr-sm-2" id="deliveryDate" name="deliveryDate"
+      [ngModel]="data.deliveryDate" placeholder="Delivery Date" required="">
+    <button type="submit" class="btn btn-danger mb-2" (click)="onSave(inventoryForm)">Save</button>
+    &nbsp;&nbsp;
+    <button type="button" class="btn btn-light mb-2" [routerLink]="['/inventory']">Cancel</button>
+  </form>
+
+</div>

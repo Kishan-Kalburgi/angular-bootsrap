@@ -1,0 +1,10 @@
+.my-head {
+    margin-top: 10em;
+}
+
+.form-add-inventory {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: auto;
+}
