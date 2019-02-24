@@ -1,8 +1,8 @@
 export class InventomryModel {
-    billNo: number;
     customerName: string;
-    orderDate: string;
-    deliveryDate: string;
+    customerPhone: number;
+    orderDate: Date;
+    deliveryDate: Date;
     status: string;
 
     constructor(values: Object = {}) {

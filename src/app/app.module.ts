@@ -16,6 +16,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { AdminMainContentComponent } from './pages/admin/admin-main-content/admin-main-content.component';
 import { AddInventoryComponent } from './pages/admin/add-inventory/add-inventory.component';
+import { HttpClientModule } from '@angular/common/http';
+import { Service } from './service.service';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,10 @@ import { AddInventoryComponent } from './pages/admin/add-inventory/add-inventory
     BrowserAnimationsModule,
     FormsModule,
     LayoutModule,
-    AngularMaterial
+    AngularMaterial,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

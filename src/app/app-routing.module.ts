@@ -13,7 +13,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'pricing', component: PricingComponent},
   {path: 'inventory', canActivate: [AuthGuard], component: AdminMainContentComponent},
-  {path: 'addInventory', canActivate: [AuthGuard], component: AddInventoryComponent}
+  {path: 'addInventory', canActivate: [AuthGuard], component: AddInventoryComponent},
+  {path: 'editInventory/:id', canActivate: [AuthGuard], component: AddInventoryComponent}
 ];
 
 @NgModule({
