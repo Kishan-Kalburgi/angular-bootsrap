@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AddInventoryComponent implements OnInit {
 
+  status: string;
   data: InventomryModel;
   errorMsg = false;
 
@@ -21,6 +22,7 @@ export class AddInventoryComponent implements OnInit {
 
   onSave(formData: NgForm) {
     if (formData.valid) {
+      formData.value.status = this.status;
       console.log(formData.value);
     } else {
       console.log('fail');

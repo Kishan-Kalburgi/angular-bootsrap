@@ -24,9 +24,18 @@
     <label for="deliveryDate" class="mb-2 mr-sm-2"><i class="fas fa-calendar-check"></i></label>
     <input type="date" class="form-control mb-2 mr-sm-2" id="deliveryDate" name="deliveryDate"
       [ngModel]="data.deliveryDate" placeholder="Delivery Date" required="">
-    <button type="submit" class="btn btn-danger mb-2" (click)="onSave(inventoryForm)">Save</button>
-    &nbsp;&nbsp;
-    <button type="button" class="btn btn-light mb-2" [routerLink]="['/inventory']">Cancel</button>
+
+    <!-- status -->
+    <label class="mb-2 mr-sm-2"><strong>Status</strong></label>
+    <mat-select class="mtInput" [disabled]='dialogueType' placeholder="Select Item Status" [(value)]="status">
+      <mat-option value="todo">Todo</mat-option>
+      <mat-option value="started">Started</mat-option>
+      <mat-option value="ready">Ready</mat-option>
+      <mat-option value="delivered">Delivered</mat-option>
+    </mat-select>
   </form>
+  <button type="submit" class="btn btn-danger mb-2" (click)="onSave(inventoryForm)">Save</button>
+  &nbsp;&nbsp;
+  <button type="button" class="btn btn-light mb-2" [routerLink]="['/inventory']">Cancel</button>
 
 </div>
