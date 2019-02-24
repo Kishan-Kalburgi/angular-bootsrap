@@ -2,6 +2,7 @@ import { Service } from './../../service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,9 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  errorMsg = false;
+  errorMsg2 = false;
 
   constructor(
     private router: Router,
@@ -18,13 +22,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignin() {
-    // this.loginService.login();
-    // this.router.navigate(['/dashboard']);
-    this.authService.login().subscribe(() => {
-      localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['/inventory']);
-    });
+  onSignin(signinForm: NgForm) {
+    if (signinForm.valid) {
+      if (signinForm.value.userID === 'admin' && signinForm.value.pwd === '1234') {
+        this.authService.login().subscribe(() => {
+          localStorage.setItem('isLoggedIn', 'true');
+          this.router.navigate(['/inventory']);
+        });
+      } else {
+        this.errorMsg2 = true;
+        this.errorMsg = false;
+      }
+    } else {
+      this.errorMsg = true;
+      this.errorMsg2 = false;
+    }
   }
-
 }
