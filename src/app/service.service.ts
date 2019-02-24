@@ -5,19 +5,4 @@ import { Injectable } from '@angular/core';
 })
 export class Service {
 
-  isLoggedInFlag = false;
-
-  constructor() { }
-
-  login() {
-    this.isLoggedInFlag = true;
-  }
-
-  logout() {
-    this.isLoggedInFlag = false;
-  }
-
-  isLoggedIn() {
-    return this.isLoggedInFlag;
-  }
 }
