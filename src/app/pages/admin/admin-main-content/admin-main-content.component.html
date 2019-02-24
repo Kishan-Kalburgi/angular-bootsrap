@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 my-pd">
       <div class="list-group">
         <a class="list-group-item list-group-item-action" (click)="applyBtnFilter('')">All</a>
         <a class="list-group-item list-group-item-action" (click)="applyBtnFilter('todo')">To-do</a>
@@ -9,11 +9,11 @@
         <a class="list-group-item list-group-item-action" (click)="applyBtnFilter('delivered')">Delivered</a>
       </div>
     </div>
-    <div class="col-md-10">
-      <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand">{{ pageTitle }}</span>
+    <div class="col-md-10 my-pd2">
+      <nav class="navbar navbar-light" style="background-color: #c63030;">
+        <span class="navbar-brand" style="color: white;">{{ pageTitle }}</span>
       </nav>
-      <div class="container-fluid">
+      <div class="c-f my-pd3">
         <!-- filter -->
         <div class="row my-mr">
           <input class="form-control" type="text" placeholder="search..."
