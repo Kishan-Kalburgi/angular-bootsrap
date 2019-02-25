@@ -1,7 +1,7 @@
 export class InventomryModel {
     _id?: string;
     customerName: string;
-    customerPhone: number;
+    phoneNumber: number;
     orderDate: Date;
     deliveryDate: Date;
     status: string;

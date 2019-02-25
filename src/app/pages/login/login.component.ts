@@ -13,11 +13,12 @@ export class LoginComponent implements OnInit {
 
   errorMsg = false;
   errorMsg2 = false;
+  userID = '';
+  pwd = '';
 
   constructor(
     private router: Router,
-    private loginService: Service,
-    public authService: AuthService) { }
+    public authService: AuthService) {}
 
   ngOnInit() {
   }
