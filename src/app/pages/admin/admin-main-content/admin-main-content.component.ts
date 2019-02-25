@@ -30,7 +30,7 @@ export class AdminMainContentComponent implements OnInit {
     private dataService: Service,
     private router: Router) { }
 
-  displayedColumns: string[] = ['customerName', 'phoneNumber', 'orderDate', 'deliveryDate'];
+  displayedColumns: string[] = ['customerName', 'phoneNumber', 'orderDate', 'deliveryDate', 'action'];
   dataSource = new MatTableDataSource;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -38,8 +38,6 @@ export class AdminMainContentComponent implements OnInit {
 
   ngOnInit() {
     this.fetchDate();
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
   }
 
   // function to fetch Data
@@ -47,13 +45,15 @@ export class AdminMainContentComponent implements OnInit {
     this.dataService.getAllBills().subscribe((data: InventomryModel[]) => {
       this.INVENTORY = data['data'];
       this.dataSource = new MatTableDataSource(this.INVENTORY);
-      console.log('data was fetched');
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      // console.log('data was fetched');
       // this.filterData();
     });
   }
 
   applyFilter(filterValue: string) {
-      this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   applyBtnFilter(filterValue: string) {
@@ -68,5 +68,16 @@ export class AdminMainContentComponent implements OnInit {
 
   onRowClick(rowData) {
     this.router.navigate(['/editInventory', rowData._id]);
+  }
+
+  onDelete(rowToDel) {
+    this.dataService.deleteBill(rowToDel)
+      .subscribe(res => {
+        // console.log(res);
+        this.fetchDate();
+      },
+        err => {
+          console.log(err);
+        });
   }
 }
