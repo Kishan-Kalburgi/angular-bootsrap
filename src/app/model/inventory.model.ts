@@ -1,4 +1,5 @@
 export class InventomryModel {
+    _id?: string;
     customerName: string;
     customerPhone: number;
     orderDate: Date;
