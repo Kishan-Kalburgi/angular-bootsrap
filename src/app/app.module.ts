@@ -5,6 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 
+// reCAPTCHA
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+
 
 // import components
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +22,6 @@ import { AdminMainContentComponent } from './pages/admin/admin-main-content/admi
 import { AddInventoryComponent } from './pages/admin/add-inventory/add-inventory.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Service } from './service.service';
-import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     LayoutModule,
     AngularMaterial,
-    HttpClientModule
+    HttpClientModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [Service],
   bootstrap: [AppComponent]
