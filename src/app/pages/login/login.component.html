@@ -1,5 +1,5 @@
 <div class="text-center">
-  <form class="form-signin" #signinForm="ngForm">
+  <form class="form-signin" #signinForm="ngForm" autocomplete="off">
     <img class="mb-4" src="./../../../assets/brand_logo.png" alt="" width="300" height="50">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <div class="alert alert-warning" *ngIf="errorMsg">
@@ -8,13 +8,16 @@
     <div class="alert alert-warning" *ngIf="errorMsg2">
       User ID/Password is wrong!!
     </div>
+    <div class="alert alert-warning" *ngIf="wrongCode">
+      Entered Code is wrong. Please Re-Enter the code!! <button class="btn btn-link" (click)="onSignin(signinForm)"
+        data-toggle="modal" data-target="#myModal"> Resend Code </button>
+    </div>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" #email="ngModel" class="form-control" placeholder="Email address" name="userID"
-      [ngModel]="userID" required email autofocus="">
+    <input type="email" id="inputEmail" #email="ngModel" class="form-control" placeholder="Email address"
+      name="customerName" [ngModel]="customerName" required email autofocus="">
 
-      <!-- error msg for user ID -->
+    <!-- error msg for user ID -->
     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-
       <div *ngIf="email.errors.required; else errMsgEmail">
         Email is Required.
       </div>
@@ -23,38 +26,60 @@
           Email is Not Valid
         </div>
       </ng-template>
-
     </div>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" #pwd="ngModel" class="form-control" name="pwd" [ngModel]="pwd" placeholder="Password"
-      required >
+    <input type="password" id="inputPassword" #pawd="ngModel" class="form-control" name="pwd" [ngModel]="pwd"
+      placeholder="Password" required minlength="6">
 
-      <!-- error msg for password -->
-      <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="alert alert-danger">
-
-        <div *ngIf="pwd.errors.required; else errMsgPwd">
-          Password is Required.
-        </div>
-        <ng-template #errMsgPwd>
-          <div *ngIf="pwd.minlength">
-            Password is Not Valid
-          </div>
-        </ng-template>
-  
-      </div>
+    <!-- error msg for password -->
+    <div *ngIf="(pawd.errors?.minlength) && (pawd.dirty || pawd.touched)" class="alert alert-danger">
+      Password is Required.
+    </div>
 
     <br>
     <re-captcha (resolved)="resolved($event)" siteKey="6LdZ1ZMUAAAAAKvPbpU8CRyw0yACL-KJk8i4teF3"
       [(ngModel)]="declarativeFormCaptchaValue" name="captcha" required></re-captcha>
     <br>
+
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="btn btn-lg btn-danger btn-block" type="submit" (click)="onSignin(signinForm)">Sign in</button>
-    <!-- <button class="btn btn-lg btn-danger btn-block" type="submit" (click)="onSignip(signinForm)" *ngIf="isSignup">Sign Up</button> -->
+
+    <!-- <button class="btn btn-lg btn-danger btn-block" type="submit" (click)="onSignin(signinForm)">Sign in</button> -->
+    <button class="btn btn-lg btn-danger btn-block" type="submit" data-toggle="modal" data-target="#myModal"
+      (click)="onSignin(signinForm)" [disabled]="signinForm.invalid">Sign
+      in</button>
     <br>
-    <a href="/signup" (click)="onisSignup()">Signup</a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Header</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-warning" *ngIf="errorMsg">
+              Please enter Email and Password correctly!!
+            </div>
+            <form class="form-inline" #codeForm="ngForm">
+              <label for="codeInput" class="mb-2 mr-sm-2">Enter the Code</label>
+              <input type="text" name="codeInput" id="codeInput" [ngModel]="codeInput">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"
+              (click)="onCodeSubmit(codeForm)">Submit</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </form>
+  <p>Don't have an account?<a [routerLink]="['/registration']"><strong> Signup </strong></a></p>
 </div>
