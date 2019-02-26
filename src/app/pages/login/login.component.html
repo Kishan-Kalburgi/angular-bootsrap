@@ -13,8 +13,8 @@
         data-toggle="modal" data-target="#myModal"> Resend Code </button>
     </div>
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" #email="ngModel" class="form-control" placeholder="Email address"
-      name="customerName" [ngModel]="customerName" required email autofocus="">
+    <input type="email" id="inputEmail" #email="ngModel" class="form-control" placeholder="Email address" name="email"
+      [ngModel]="emailInput" required email>
 
     <!-- error msg for user ID -->
     <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
@@ -27,6 +27,7 @@
         </div>
       </ng-template>
     </div>
+
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" #pawd="ngModel" class="form-control" name="pwd" [ngModel]="pwd"
       placeholder="Password" required minlength="6">

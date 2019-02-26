@@ -22,6 +22,7 @@ import { AdminMainContentComponent } from './pages/admin/admin-main-content/admi
 import { AddInventoryComponent } from './pages/admin/add-inventory/add-inventory.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Service } from './service.service';
+import { RegistrationComponent } from './pages/admin/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { Service } from './service.service';
     HomeComponent,
     PricingComponent,
     AdminMainContentComponent,
-    AddInventoryComponent
+    AddInventoryComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

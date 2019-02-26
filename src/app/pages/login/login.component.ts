@@ -13,15 +13,21 @@ export class LoginComponent implements OnInit {
 
   errorMsg = false;
   errorMsg2 = false;
-  userID = '';
-  pwd = null;
+  wrongCode = false;
+  email = '';
+  pwd = '';
   recaptcha = '';
+
+  /* code for 2FA */
+  code: string;
+
   // isSignup = false;
   // isSignin = true;
 
   constructor(
     private router: Router,
-    public authService: AuthService) { }
+    public authService: AuthService,
+    private service: Service) { }
 
   ngOnInit() {
   }
@@ -31,23 +37,34 @@ export class LoginComponent implements OnInit {
   }
 
   onSignin(signinForm: NgForm) {
+    console.log(signinForm.value);
     if (signinForm.valid) {
-      if (signinForm.value.userID === 'admin@ub.com' && signinForm.value.pwd === '123456') {
-        this.authService.login().subscribe(() => {
-          localStorage.setItem('isLoggedIn', 'true');
-          this.router.navigate(['/inventory']);
+      this.service.signinUser(signinForm.value)
+        .subscribe(res => {
+          this.code = res['data'];
+          this.authService.login()
+            .subscribe(() => {
+            localStorage.setItem('isLoggedIn', 'true');
+          });
+        },
+        err => {
+          this.errorMsg2 = true;
+          this.errorMsg = false;
         });
-      } else {
-        this.errorMsg2 = true;
-        this.errorMsg = false;
-      }
     } else {
       this.errorMsg = true;
       this.errorMsg2 = false;
     }
   }
 
-  onisSignup() {
-    // this.isSignup = true;
+  onCodeSubmit(codeForm: NgForm) {
+    if (codeForm.value.codeInput === this.code) {
+      console.log(codeForm.value);
+      this.router.navigate(['/inventory']);
+    } else {
+      console.log('Invalide code');
+      this.wrongCode = true;
+    }
   }
+
 }
