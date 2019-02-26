@@ -43,4 +43,9 @@ export class Service {
     return this.http.put('http://localhost:3000/bill/delete', data);
     // return this.http.put('https://ufixibreak.herokuapp.com/bill/delete', data);
   }
+
+  // 2fa
+  authUser(data) {
+    return this.http.post('http://localhost:3000/users/2fa', data);
+  }
 }
