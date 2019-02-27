@@ -948,7 +948,6 @@ var LoginComponent = /** @class */ (function () {
         this.email = '';
         this.pwd = '';
         this.recaptcha = '';
-        this.inputEmail = '';
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
@@ -1082,40 +1081,42 @@ var Service = /** @class */ (function () {
     // get all bills information
     Service.prototype.getAllBills = function () {
         //   http call
-        return this.http.get('http://localhost:3000/bill/all');
-        // return this.http.get('https://ufixibreak.herokuapp.com/bill/all');
+        // return this.http.get('http://localhost:3000/bill/all');
+        return this.http.get('https://ufixibreak.herokuapp.com/bill/all');
     };
     // get bill information by id
     Service.prototype.getByid = function (data) {
         //   http call
-        return this.http.get('http://localhost:3000/bill/byid/' + data);
-        // return this.http.get('https://ufixibreak.herokuapp.com/bill/byid/' + data);
+        // return this.http.get('http://localhost:3000/bill/byid/' + data);
+        return this.http.get('https://ufixibreak.herokuapp.com/bill/byid/' + data);
     };
     // save bill
     Service.prototype.saveBill = function (data) {
         // http call
-        return this.http.post('http://localhost:3000/bill/add', data);
-        // return this.http.post('https://ufixibreak.herokuapp.com/bill/add', data);
+        // return this.http.post('http://localhost:3000/bill/add', data);
+        return this.http.post('https://ufixibreak.herokuapp.com/bill/add', data);
     };
     // update bill
     Service.prototype.updateBill = function (data) {
         // http call
-        return this.http.put('http://localhost:3000/bill/edit', data);
-        // return this.http.put('https://ufixibreak.herokuapp.com/bill/edit', data);
+        // return this.http.put('http://localhost:3000/bill/edit', data);
+        return this.http.put('https://ufixibreak.herokuapp.com/bill/edit', data);
     };
     // delete bill
     Service.prototype.deleteBill = function (data) {
         // http call
-        return this.http.put('http://localhost:3000/bill/delete', data);
-        // return this.http.put('https://ufixibreak.herokuapp.com/bill/delete', data);
+        // return this.http.put('http://localhost:3000/bill/delete', data);
+        return this.http.put('https://ufixibreak.herokuapp.com/bill/delete', data);
     };
     // signin
     Service.prototype.signinUser = function (data) {
-        return this.http.post('http://localhost:3000/users/signin', data);
+        // return this.http.post('http://localhost:3000/users/signin', data);
+        return this.http.post('https://ufixibreak.herokuapp.com/users/signin', data);
     };
     // signup
     Service.prototype.saveUser = function (data) {
-        return this.http.post('http://localhost:3000/users/signup', data);
+        // return this.http.post('http://localhost:3000/users/signup', data);
+        return this.http.post('https://ufixibreak.herokuapp.com/users/signup', data);
     };
     Service = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
