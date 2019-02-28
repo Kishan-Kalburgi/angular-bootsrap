@@ -14,9 +14,12 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'pricing', component: PricingComponent},
-  {path: 'inventory', canActivate: [AuthGuard], component: AdminMainContentComponent},
-  {path: 'addInventory', canActivate: [AuthGuard], component: AddInventoryComponent},
-  {path: 'editInventory/:id', canActivate: [AuthGuard], component: AddInventoryComponent}
+  {path: 'inventory', component: AdminMainContentComponent},
+  {path: 'addInventory', component: AddInventoryComponent},
+  {path: 'editInventory/:id', component: AddInventoryComponent}
+  // {path: 'inventory', canActivate: [AuthGuard], component: AdminMainContentComponent},
+  // {path: 'addInventory', canActivate: [AuthGuard], component: AddInventoryComponent},
+  // {path: 'editInventory/:id', canActivate: [AuthGuard], component: AddInventoryComponent}
 ];
 
 @NgModule({

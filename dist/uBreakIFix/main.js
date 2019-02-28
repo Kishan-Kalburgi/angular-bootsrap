@@ -81,11 +81,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _pages_home_home_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/home/home.component */ "./src/app/pages/home/home.component.ts");
-/* harmony import */ var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/auth.guard */ "./src/app/auth/auth.guard.ts");
-/* harmony import */ var _pages_admin_admin_main_content_admin_main_content_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/admin/admin-main-content/admin-main-content.component */ "./src/app/pages/admin/admin-main-content/admin-main-content.component.ts");
-/* harmony import */ var _pages_admin_add_inventory_add_inventory_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/admin/add-inventory/add-inventory.component */ "./src/app/pages/admin/add-inventory/add-inventory.component.ts");
-/* harmony import */ var _pages_admin_registration_registration_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/admin/registration/registration.component */ "./src/app/pages/admin/registration/registration.component.ts");
-
+/* harmony import */ var _pages_admin_admin_main_content_admin_main_content_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/admin/admin-main-content/admin-main-content.component */ "./src/app/pages/admin/admin-main-content/admin-main-content.component.ts");
+/* harmony import */ var _pages_admin_add_inventory_add_inventory_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/admin/add-inventory/add-inventory.component */ "./src/app/pages/admin/add-inventory/add-inventory.component.ts");
+/* harmony import */ var _pages_admin_registration_registration_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/admin/registration/registration.component */ "./src/app/pages/admin/registration/registration.component.ts");
 
 
 
@@ -99,11 +97,14 @@ var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: _pages_home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"] },
     { path: 'login', component: _pages_login_login_component__WEBPACK_IMPORTED_MODULE_2__["LoginComponent"] },
-    { path: 'registration', component: _pages_admin_registration_registration_component__WEBPACK_IMPORTED_MODULE_9__["RegistrationComponent"] },
+    { path: 'registration', component: _pages_admin_registration_registration_component__WEBPACK_IMPORTED_MODULE_8__["RegistrationComponent"] },
     { path: 'pricing', component: _pages_pricing_pricing_component__WEBPACK_IMPORTED_MODULE_1__["PricingComponent"] },
-    { path: 'inventory', canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]], component: _pages_admin_admin_main_content_admin_main_content_component__WEBPACK_IMPORTED_MODULE_7__["AdminMainContentComponent"] },
-    { path: 'addInventory', canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]], component: _pages_admin_add_inventory_add_inventory_component__WEBPACK_IMPORTED_MODULE_8__["AddInventoryComponent"] },
-    { path: 'editInventory/:id', canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]], component: _pages_admin_add_inventory_add_inventory_component__WEBPACK_IMPORTED_MODULE_8__["AddInventoryComponent"] }
+    { path: 'inventory', component: _pages_admin_admin_main_content_admin_main_content_component__WEBPACK_IMPORTED_MODULE_6__["AdminMainContentComponent"] },
+    { path: 'addInventory', component: _pages_admin_add_inventory_add_inventory_component__WEBPACK_IMPORTED_MODULE_7__["AddInventoryComponent"] },
+    { path: 'editInventory/:id', component: _pages_admin_add_inventory_add_inventory_component__WEBPACK_IMPORTED_MODULE_7__["AddInventoryComponent"] }
+    // {path: 'inventory', canActivate: [AuthGuard], component: AdminMainContentComponent},
+    // {path: 'addInventory', canActivate: [AuthGuard], component: AddInventoryComponent},
+    // {path: 'editInventory/:id', canActivate: [AuthGuard], component: AddInventoryComponent}
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -269,57 +270,6 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/auth/auth.guard.ts":
-/*!************************************!*\
-  !*** ./src/app/auth/auth.guard.ts ***!
-  \************************************/
-/*! exports provided: AuthGuard */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth/auth.service.ts");
-
-
-
-
-var AuthGuard = /** @class */ (function () {
-    function AuthGuard(authService, router) {
-        this.authService = authService;
-        this.router = router;
-    }
-    AuthGuard.prototype.canActivate = function (next, state) {
-        var url = state.url;
-        // console.log(url);
-        return this.checkLogin(url);
-    };
-    AuthGuard.prototype.checkLogin = function (url) {
-        if (this.authService.isLoggedIn()) {
-            return true;
-        }
-        // Store the attempted URL for redirecting
-        this.authService.redirectUrl = url;
-        // Navigate to the login page with extras
-        this.router.navigate(['']);
-        return false;
-    };
-    AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], AuthGuard);
-    return AuthGuard;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/auth/auth.service.ts":
 /*!**************************************!*\
   !*** ./src/app/auth/auth.service.ts ***!
@@ -470,7 +420,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar fixed-top navbar-expand-lg navbar-dark bg-dark\">\n  <span class=\"navbar-brand mb-0 h1\">UBREAK<span class=\"text-danger\">IFIX</span></span>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\"\n    aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNavAltMarkup\">\n    <div class=\"navbar-nav\">\n      <a class=\"nav-item nav-link\" [routerLink]=\"['/home']\">Home</a>\n      <a class=\"nav-item nav-link\" [routerLink]=\"['/pricing']\">Services</a>\n      <a class=\"nav-item nav-link\" [routerLink]=\"['/pricing']\">Pricing</a>\n      <li class=\"nav-item dropdown\" *ngIf=\"authService.isLoggedIn()\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n          aria-haspopup=\"true\" aria-expanded=\"false\">\n          Inventory\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\" [routerLink]=\"['/inventory']\"><i class=\"fas fa-eye\"></i> View Inventories</a>\n          <a class=\"dropdown-item\" [routerLink]=\"['/addInventory']\"><i class=\"fas fa-plus-circle\"></i> Add Inventory</a>\n        </div>\n      </li>\n    </div>\n    <div class=\"container\"></div>\n    <!-- if user not logged in -->\n    <div class=\"navbar-nav\" *ngIf=\"!authService.isLoggedIn()\">\n      <a class=\"nav-item nav-link btn btn-outline-danger btn-sm\" [routerLink]=\"['/login']\">Login</a>\n    </div>\n    <!-- if user logged in -->\n    <div class=\"navbar-nav\" *ngIf=\"authService.isLoggedIn()\">\n      <a class=\"nav-item nav-link btn btn-outline-danger btn-sm\" (click)=\"onSignout()\">Logout</a>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar fixed-top navbar-expand-lg navbar-dark bg-dark\">\n  <span class=\"navbar-brand mb-0 h1\">UBREAK<span class=\"text-danger\">IFIX</span></span>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\"\n    aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarNavAltMarkup\">\n    <div class=\"navbar-nav\">\n      <a class=\"nav-item nav-link\" [routerLink]=\"['/home']\">Home</a>\n      <a class=\"nav-item nav-link\" [routerLink]=\"['/pricing']\">Services</a>\n      <a class=\"nav-item nav-link\" [routerLink]=\"['/pricing']\">Pricing</a>\n      <!-- <li class=\"nav-item dropdown\" *ngIf=\"authService.isLoggedIn()\"> -->\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\"\n          aria-haspopup=\"true\" aria-expanded=\"false\">\n          Inventory\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\" [routerLink]=\"['/inventory']\"><i class=\"fas fa-eye\"></i> View Inventories</a>\n          <a class=\"dropdown-item\" [routerLink]=\"['/addInventory']\"><i class=\"fas fa-plus-circle\"></i> Add Inventory</a>\n        </div>\n      </li>\n    </div>\n    <div class=\"container\"></div>\n    <!-- if user not logged in -->\n    <div class=\"navbar-nav\" *ngIf=\"!authService.isLoggedIn()\">\n      <a class=\"nav-item nav-link btn btn-outline-danger btn-sm\" [routerLink]=\"['/login']\">Login</a>\n    </div>\n    <!-- if user logged in -->\n    <div class=\"navbar-nav\" *ngIf=\"authService.isLoggedIn()\">\n      <a class=\"nav-item nav-link btn btn-outline-danger btn-sm\" (click)=\"onSignout()\">Logout</a>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -911,7 +861,7 @@ module.exports = ".form-signin {\r\n    width: 100%;\r\n    max-width: 420px;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"text-center\">\n  <form class=\"form-signin\" #signinForm=\"ngForm\" autocomplete=\"off\">\n    <img class=\"mb-4\" src=\"./../../../assets/brand_logo.png\" alt=\"\" width=\"300\" height=\"50\">\n    <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\n    <div class=\"alert alert-warning\" *ngIf=\"errorMsg\">\n      Please enter all information correctly!!\n    </div>\n    <div class=\"alert alert-warning\" *ngIf=\"errorMsg2\">\n      User ID/Password is wrong!!\n    </div>\n    <div class=\"alert alert-warning\" *ngIf=\"wrongCode\">\n      Entered Code is wrong. Please Re-Enter the code!! <button class=\"btn btn-link\" (click)=\"onSignin(signinForm)\"\n        data-toggle=\"modal\" data-target=\"#myModal\"> Resend Code </button>\n    </div>\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n    <input type=\"email\" id=\"inputEmail\" #email=\"ngModel\" class=\"form-control\" placeholder=\"Email address\" name=\"email\"\n      [ngModel]=\"emailInput\" required email>\n\n    <!-- error msg for user ID -->\n    <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" class=\"alert alert-danger\">\n      <div *ngIf=\"email.errors.required; else errMsgEmail\">\n        Email is Required.\n      </div>\n      <ng-template #errMsgEmail>\n        <div *ngIf=\"email\">\n          Email is Not Valid\n        </div>\n      </ng-template>\n    </div>\n\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n    <input type=\"password\" id=\"inputPassword\" #pawd=\"ngModel\" class=\"form-control\" name=\"pwd\" [ngModel]=\"pwd\"\n      placeholder=\"Password\" required minlength=\"6\">\n\n    <!-- error msg for password -->\n    <div *ngIf=\"(pawd.errors?.minlength) && (pawd.dirty || pawd.touched)\" class=\"alert alert-danger\">\n      Password is Required.\n    </div>\n\n    <br>\n    <re-captcha (resolved)=\"resolved($event)\" siteKey=\"6LdZ1ZMUAAAAAKvPbpU8CRyw0yACL-KJk8i4teF3\"\n      [(ngModel)]=\"declarativeFormCaptchaValue\" name=\"captcha\" required></re-captcha>\n    <br>\n\n    <div class=\"checkbox mb-3\">\n      <label>\n        <input type=\"checkbox\" value=\"remember-me\"> Remember me\n      </label>\n    </div>\n\n    <!-- <button class=\"btn btn-lg btn-danger btn-block\" type=\"submit\" (click)=\"onSignin(signinForm)\">Sign in</button> -->\n    <button class=\"btn btn-lg btn-danger btn-block\" type=\"submit\" data-toggle=\"modal\" data-target=\"#myModal\"\n      (click)=\"onSignin(signinForm)\" [disabled]=\"signinForm.invalid\">Sign\n      in</button>\n    <br>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" role=\"dialog\">\n      <div class=\"modal-dialog\">\n\n        <!-- Modal content-->\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h4 class=\"modal-title\">Code</h4>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n          </div>\n          <div class=\"modal-body\">\n            <div class=\"alert alert-warning\" *ngIf=\"errorMsg\">\n              Please enter Email and Password correctly!!\n            </div>\n            <form class=\"form-inline\" #codeForm=\"ngForm\">\n              <label for=\"codeInput\" class=\"mb-2 mr-sm-2\">Enter the Code</label>\n              <input type=\"text\" name=\"codeInput\" id=\"codeInput\" [ngModel]=\"codeInput\">\n            </form>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\"\n              (click)=\"onCodeSubmit(codeForm)\">Submit</button>\n          </div>\n        </div>\n\n      </div>\n    </div>\n  </form>\n  <p>Don't have an account?<a [routerLink]=\"['/registration']\"><strong> Signup </strong></a></p>\n</div>"
+module.exports = "<div class=\"text-center\">\n  <form class=\"form-signin\" #signinForm=\"ngForm\" autocomplete=\"off\">\n    <img class=\"mb-4\" src=\"./../../../assets/brand_logo.png\" alt=\"\" width=\"300\" height=\"50\">\n    <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\n    <div class=\"alert alert-warning\" *ngIf=\"errorMsg\">\n      Please enter all information correctly!!\n    </div>\n    <div class=\"alert alert-warning\" *ngIf=\"errorMsg2\">\n      User ID/Password is wrong!!\n    </div>\n    <div class=\"alert alert-warning\" *ngIf=\"wrongCode\">\n      Entered Code is wrong. Please Re-Enter the code!! <button class=\"btn btn-link\" (click)=\"onSignin(signinForm)\"\n        data-toggle=\"modal\" data-target=\"#myModal\"> Resend Code </button>\n    </div>\n    <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\n    <input type=\"email\" id=\"inputEmail\" #email=\"ngModel\" class=\"form-control\" placeholder=\"Email address\" name=\"email\"\n      [ngModel]=\"emailInput\" required email>\n\n    <!-- error msg for user ID -->\n    <div *ngIf=\"email.invalid && (email.dirty || email.touched)\" class=\"alert alert-danger\">\n      <div *ngIf=\"email.errors.required; else errMsgEmail\">\n        Email is Required.\n      </div>\n      <ng-template #errMsgEmail>\n        <div *ngIf=\"email\">\n          Email is Not Valid\n        </div>\n      </ng-template>\n    </div>\n\n    <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n    <input type=\"password\" id=\"inputPassword\" #pawd=\"ngModel\" class=\"form-control\" name=\"pwd\" [ngModel]=\"pwd\"\n      placeholder=\"Password\" required minlength=\"6\">\n\n    <!-- error msg for password -->\n    <div *ngIf=\"(pawd.errors?.minlength) && (pawd.dirty || pawd.touched)\" class=\"alert alert-danger\">\n      Password is Required.\n    </div>\n\n    <br>\n    <re-captcha (resolved)=\"resolved($event)\" siteKey=\"6LdZ1ZMUAAAAAKvPbpU8CRyw0yACL-KJk8i4teF3\"\n      [(ngModel)]=\"declarativeFormCaptchaValue\" name=\"captcha\" required></re-captcha>\n    <br>\n\n    <div class=\"checkbox mb-3\">\n      <label>\n        <input type=\"checkbox\" value=\"remember-me\"> Remember me\n      </label>\n    </div>\n\n    <!-- <button class=\"btn btn-lg btn-danger btn-block\" type=\"submit\" (click)=\"onSignin(signinForm)\">Sign in</button> -->\n    <button class=\"btn btn-lg btn-danger btn-block\" type=\"submit\" data-toggle=\"modal\" data-target=\"#myModal\"\n      (click)=\"onSignin(signinForm)\" [disabled]=\"signinForm.invalid\">Sign\n      in</button>\n    <br>\n\n    <!-- Modal -->\n    <div class=\"modal fade\" id=\"myModal\" role=\"dialog\">\n      <div class=\"modal-dialog\">\n\n        <!-- Modal content-->\n        <div class=\"modal-content\">\n          <div class=\"modal-header\">\n            <h4 class=\"modal-title\">Code</h4>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n          </div>\n          <div class=\"modal-body\">\n            <div class=\"alert alert-warning\" *ngIf=\"errorMsg\">\n              Please enter Email and Password correctly!!\n            </div>\n            <form class=\"form-inline\" #codeForm=\"ngForm\">\n              <label for=\"codeInput\" class=\"mb-2 mr-sm-2\">Enter the Code</label>\n              <input type=\"text\" name=\"codeInput\" id=\"codeInput\" [ngModel]=\"codeInput\">\n            </form>\n          </div>\n          <div class=\"modal-footer\">\n            <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\"\n              (click)=\"onCodeSubmit(codeForm)\">Submit</button>\n          </div>\n        </div>\n\n      </div>\n    </div>\n  </form>\n  <p>For Demo<button class=\"btn btn-link\" [routerLink]=\"['/inventory']\" >click here</button></p>\n  <p>Don't have an account?<a [routerLink]=\"['/registration']\"><strong> Signup </strong></a></p>\n</div>"
 
 /***/ }),
 
